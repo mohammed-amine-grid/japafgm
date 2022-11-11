@@ -1,17 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import SearchForm from './components/SearchForm'
+import PokemonInfo from './components/PokemonInfo'
+import './App.scss'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <SearchInput  />
-      <div className='pokmeon-info'>
-        <PokemonErrorBoundary>
-          <PokemonInfo />
-        </PokemonErrorBoundary>
+     
+      <SearchForm pokemonName='' onSubmit={() => console.log('hi')
+      } />
+      <div className='pokemon-info'>
+        <PokemonInfo />
+        {/* <PokemonErrorBoundary>
+        </PokemonErrorBoundary> */}
       </div>
     </div>
   )

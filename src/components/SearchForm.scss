@@ -12,30 +12,34 @@
     }
   }
 
-  &__input-pokeball-submit {
-    
+  &__input-submit {
     // background-color: #fff;
-    display: flex   ;
+    display: flex;
+    width: 100%;
     &__input {
-    flex: 4 0 80%;
+      // flex: 4 0 0%;
       box-sizing: border-box;
       outline: 0;
       border: 3px solid transparent;
       padding: 1em;
-      width: 100%;
+      flex: 1;
+      margin-right: 10px;
 
       border-radius: 20px;
       &:focus-within {
         background: linear-gradient(#fff 0 0) padding-box,
-          linear-gradient(#ff0000, #cc0000, #3b4cca, #0000, #b3a125) border-box;
+          linear-gradient(#ff0000, #cc0000, #3b4cca, #ffde00, #b3a125)
+            border-box;
         border: 3px solid transparent;
         border-radius: 20px;
       }
     }
-    &__pokeball {
-        height: 50px;
+    &__submit {
+      border-radius: 20px;
+      background-color: #ffde00;
+      color: #cc0000;
+      border: none;
+      width: 70px;
     }
   }
-
-
 }

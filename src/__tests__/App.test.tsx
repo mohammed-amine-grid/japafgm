@@ -6,11 +6,11 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
+
 import createFetchMock from 'vitest-fetch-mock';
 
 
 const fetchMock = createFetchMock(vi);
-fetchMock.enableMocks();
 
 
 
@@ -31,26 +31,27 @@ fetchMock.mockClear();
 test('displays the pokemon', async () => {
     render(<App />)
     const input = screen.getByTestId(/input/i)
-    const submit = screen.getByTestId(/submit/i)
+    const submit = screen.getByRole('button', {name:/submit/i})
+   
     
     // verify displaying pokemon on successful request 
+
     await userEvent.clear(input);
     await userEvent.type(input, 'pikachu')
     await userEvent.click(submit)
     await screen.findAllByRole('heading', {name:/pikachu/i});
     
-    
     // verify that a request is not made when input is the same
-    fetchMock.mockClear();
+
     await userEvent.click(submit)
     await screen.findAllByRole('heading', {name:/pikachu/i});
-    expect(fetch).not.toHaveBeenCalled()
+    expect(fetch).toHaveBeenCalledTimes(1)
 
     // verify error handling
     await userEvent.clear(input)
     await userEvent.type(input, 'digimon')
     await userEvent.click(submit)
-    expect(await screen.findByRole('alert')).toHaveTextContent(/There was an error.*Unsupported pokemon.*digimon/,)
+    await screen.findByRole('alert')
     expect(console.error).toHaveBeenCalled()
 
 })

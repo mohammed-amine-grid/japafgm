@@ -4,7 +4,7 @@
 [![Technologie](https://img.shields.io/badge/%40%201.56.1%20-Sass-pink)](https://sass-lang.com/)
 [![Technologie](https://img.shields.io/badge/%40%204.6.4%20-TypeScript-blue)](https://www.typescriptlang.org/)
 
-# 
+# [Demo](https://japafgm.vercel.app/)
 
 # JAPAFGM
 Just Another Pokemon App For Good Measure (phew!), or JAPAFGM is a frontend application that connects to a free pokemon GraphQl api, and facilitates the visualization and search of pokemons through a minimal...rushed interface. 

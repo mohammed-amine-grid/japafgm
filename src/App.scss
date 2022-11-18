@@ -1,5 +1,5 @@
 // colors
-$bg-color: #811e09;
+$bg-color: #3B4CCA;
 $dot-color: #fad61d;
 
 // dimensions
@@ -7,8 +7,12 @@ $dot-size: 1px;
 $dot-space: 22px;
 
 .App {
+  // height: 100%;
   height: 100vh;
   width: 100vw;
+  font-family: 'Comic Neue', cursive;
+  // background: red;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,7 +30,7 @@ $dot-space: 22px;
     width: 80%;
   }
   .pokemon-info {
-    // background-color: white;
+  
     height: 60%;
     color: yellow;
     margin-top: 20px;
@@ -34,4 +38,5 @@ $dot-space: 22px;
     display:flex;
     justify-content: center;
   }
+ 
 }

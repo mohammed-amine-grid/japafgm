@@ -14,14 +14,17 @@ export const fetchPokemon = async (
   const pokemonQuery = `
     query PokemonInfo($name:String) {
         pokemon(name:$name) {
-            name
-            image
-            types
+          name
+          image
+          types
+          classification
+          weaknesses
+          maxHP
+          maxCP 
         }
     }
     `;
-   
-    
+
   const response = await fetch("https://graphql-pokemon2.vercel.app/", {
     method: "POST",
     headers: {
@@ -32,7 +35,6 @@ export const fetchPokemon = async (
       variables: { name: name.toLowerCase() },
     }),
   });
-
 
   const { data, errors }: JSONResponse = await response.json();
   if (response.ok) {

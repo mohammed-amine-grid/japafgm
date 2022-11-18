@@ -4,6 +4,7 @@
   align-items: center;
   &__brand {
     margin-block: 1em;
+    text-align: center;
     width: 80%;
     img {
       cursor: pointer;
@@ -13,22 +14,19 @@
   }
 
   &__input-submit {
-    // background-color: #fff;
     display: flex;
     width: 100%;
     &__input {
-      // flex: 4 0 0%;
       box-sizing: border-box;
       outline: 0;
       border: 3px solid transparent;
       padding: 1em;
       flex: 1;
       margin-right: 10px;
-
       border-radius: 20px;
       &:focus-within {
         background: linear-gradient(#fff 0 0) padding-box,
-          linear-gradient(#ff0000, #cc0000, #3b4cca, #ffde00, #b3a125)
+          linear-gradient(#ff0000, #cc0000, #3B4CCA, #ffde00, #b3a125)
             border-box;
         border: 3px solid transparent;
         border-radius: 20px;
@@ -36,10 +34,11 @@
     }
     &__submit {
       border-radius: 20px;
-      background-color: #ffde00;
-      color: #cc0000;
+      background-color: #cc0000;
+      color: #fff;
       border: none;
       width: 70px;
+      font-size: 16px;
     }
   }
 }

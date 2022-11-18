@@ -1,0 +1,98 @@
+.PokeBall  {
+    // height: 50px;
+    align-self: center;
+    justify-self: center;
+    &--idle {
+      grid-row: 1;
+      grid-column: 1;
+      align-self: center;
+      
+    }
+  &--pending {
+    align-self: center;
+    .gravity {
+      animation: shake 0.75s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .inner {
+      animation: pulse 0.75s infinite cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+  }
+
+  &--resolved {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+    align-self: center;
+    justify-self: center;
+    .open {
+      animation: scaleUp 0.2s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    }
+
+    .top {
+      animation: translateUp 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    }
+
+    .bottom {
+      animation: translateDown 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+        forwards;
+    }
+
+    .center {
+      animation: translateHigher 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+        forwards;
+    }
+    animation: fadeout 1s forwards ease-out;
+  }
+}
+
+@keyframes shake {
+  20% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes translateUp {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes translateDown {
+  to {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes scaleUp {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes translateHigher {
+  to {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes fadeout {
+  to {
+    opacity: 0;
+  }
+}

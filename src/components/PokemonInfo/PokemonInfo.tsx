@@ -2,7 +2,7 @@ import React, { FC, useEffect, useReducer } from "react";
 import { fetchPokemon } from "../../fetchPokemon";
 import { PokemonData } from "../../types";
 import PokemonInfoView from "./PokemonInfoView";
-import {PokemonInfoFallback} from './PokemonInfoFallback'
+import PokeBall from '../PokeBall'
 
 interface PokemonInfoPorps {
   pokemonName: string;
@@ -31,7 +31,6 @@ type PokemonInfoState =
     };
 
 type PokemonInfoAction =
-  //   | { type: "reset" }
   | { type: "pending" }
   | { type: "resolved"; pokemon: PokemonData }
   | { type: "rejected"; error: Error }
@@ -67,9 +66,8 @@ const PokemonInfo: FC<PokemonInfoPorps> = ({ pokemonName }) => {
   useEffect(() => {
     if (!pokemonName) return;
 
-
     dispatch({ type: "pending" });
-    
+
     fetchPokemon(pokemonName).then(
       (pokemon) => {
         dispatch({ type: "resolved", pokemon });
@@ -80,18 +78,21 @@ const PokemonInfo: FC<PokemonInfoPorps> = ({ pokemonName }) => {
   }, [pokemonName]);
 
   const { pokemon, status, error } = state;
-  switch(status) {
-    case 'idle': 
-    return <div>submit a pokemon </div>
-    case 'pending': 
-    return <PokemonInfoFallback name={pokemonName} />
-    case 'rejected': 
-    throw error
-    case 'resolved':
-    return <PokemonInfoView pokemon={pokemon} />;
+  switch (status) {
+    case "idle":
+      return <PokeBall status={status} />;
+    case "pending":
+      return <PokeBall status={status} />;
+    case "rejected":
+      throw error;
+    case "resolved":
+      return <div style={{display:'grid', placeContent:'center'}}>
+      <PokeBall status={status} />
+      <PokemonInfoView  pokemon={pokemon} />
+      </div>
 
-    default: 
-    throw new Error('but...how?')
+    default:
+      throw new Error("but...how?");
   }
 };
 

@@ -1,17 +1,6 @@
-import React, { useRef } from "react";
-import PokemonInfoView from "./PokemonInfoView";
-import { PokemonData } from "../../types";
 import type {FallbackProps, ErrorBoundaryProps} from 'react-error-boundary'
 import {ErrorBoundary} from 'react-error-boundary'
-const PokemonInfoFallback = ({ name }: { name: string }) => {
-  const initialName = useRef(name).current;
-  const fallbackPokemonData: PokemonData = {
-    name: initialName,
-    image: "/img/pokemon/fallback-pokemon.jpg",
-    types: ["XXX", "XXX"],
-  };
-  return <PokemonInfoView pokemon={fallbackPokemonData} />;
-};
+
 
 
 function ErrorFallback({error, resetErrorBoundary}: FallbackProps) {
@@ -34,6 +23,5 @@ function PokemonErrorBoundary(
 
 export  {
     PokemonErrorBoundary,
-    PokemonInfoFallback,
     ErrorFallback
 }

@@ -27,7 +27,7 @@ const SearchForm: FC<SearchFormProps> = ({ pokemonName, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="SearchForm">
       <label className="SearchForm__brand" htmlFor="search-input">
-        <img src={brand} alt="pokemon-name" />
+        <img src={brand} alt="pokemon-name"  />
       </label>
 
       <div className="SearchForm__input-submit">
@@ -39,7 +39,7 @@ const SearchForm: FC<SearchFormProps> = ({ pokemonName, onSubmit }) => {
           placeholder="pokemon name..."
         />
 
-        <button className="SearchForm__input-submit__submit">Submit</button>
+        <button className="SearchForm__input-submit__submit">Search</button>
       </div>
     </form>
   );

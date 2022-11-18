@@ -1,8 +1,10 @@
 # Technologies
 [![Technologie](https://img.shields.io/badge/%40%2018.2.0%20-React-blue)](https://es.reactjs.org/)
 [![Techonolgie](https://img.shields.io/badge/%40%203.2.3%20-Vite-green)](https://vitejs.dev/)
-[![Technologie](https://img.shields.io/badge/%40%201.56.1%20-Sass-pink)](https://tailwindcss.com/)
-[![Technologie](https://img.shields.io/badge/%40%204.6.4%20-TypeScript-blue)](https://tailwindcss.com/)
+[![Technologie](https://img.shields.io/badge/%40%201.56.1%20-Sass-pink)](https://sass-lang.com/)
+[![Technologie](https://img.shields.io/badge/%40%204.6.4%20-TypeScript-blue)](https://www.typescriptlang.org/)
+
+# 
 
 # JAPAFGM
 Just Another Pokemon App For Good Measure (phew!), or JAPAFGM is a frontend application that connects to a free pokemon GraphQl api, and facilitates the visualization and search of pokemons through a minimal...rushed interface. 

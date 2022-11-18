@@ -39,6 +39,9 @@
       border: none;
       width: 70px;
       font-size: 16px;
+      &:hover {
+        text-shadow: 1px 1px 2px #fff ;
+      }
     }
   }
 }

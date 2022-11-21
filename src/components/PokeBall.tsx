@@ -1,18 +1,16 @@
 import React, { FC } from "react";
 import "./PokeBall.scss";
 interface PokeBallPorps {
-  status?: "pending" | "resolved" | "idle";
+  status: "pending" | "resolved" | "idle";
 }
 
 const PokeBall: FC<PokeBallPorps> = ({ status }) => {
-  console.log(status);
-  
   return (
     <svg
       viewBox="0 0 100 100"
       width="150"
       height="150"
-      className={`PokeBall${status === 'idle' ? '' : '--' + status }`}
+      className={`PokeBall${status === "idle" ? "" : "--" + status}`}
       data-testid="pokeball-svg"
     >
       <g transform="translate(50 50) scale(0.8)">

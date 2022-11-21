@@ -1,54 +1,31 @@
 import React, { FC, useEffect, useReducer } from "react";
 import { fetchPokemon } from "../../fetchPokemon";
-import { PokemonData } from "../../types";
+import {
+  AsyncAction,
+  AsyncState,
+  PokemonData,
+} from "../../types";
 import PokemonInfoView from "./PokemonInfoView";
-import PokeBall from '../PokeBall'
+import PokeBall from "../PokeBall";
+import useAsync from "../../utils/useAsync";
 
 interface PokemonInfoPorps {
   pokemonName: string;
 }
 
-type PokemonInfoState =
-  | {
-      status: "idle";
-      pokemon?: null;
-      error?: null;
-    }
-  | {
-      status: "pending";
-      pokemon?: null;
-      error?: null;
-    }
-  | {
-      status: "resolved";
-      pokemon: PokemonData;
-      error: null;
-    }
-  | {
-      status: "rejected";
-      pokemon: null;
-      error: Error;
-    };
-
-type PokemonInfoAction =
-  | { type: "pending" }
-  | { type: "resolved"; pokemon: PokemonData }
-  | { type: "rejected"; error: Error }
-  | { type?: never };
-
 function pokemonInfoReducer(
-  state: PokemonInfoState,
-  action: PokemonInfoAction
-): PokemonInfoState {
+  state: AsyncState<PokemonData>,
+  action: AsyncAction<PokemonData>
+): AsyncState<PokemonData> {
   switch (action.type) {
     case "pending": {
-      return { status: "pending", pokemon: null, error: null };
+      return { status: "pending", data: null, error: null };
     }
     case "resolved": {
-      return { status: "resolved", pokemon: action.pokemon, error: null };
+      return { status: "resolved", data: action.data, error: null };
     }
     case "rejected": {
-      return { status: "rejected", pokemon: null, error: action.error };
+      return { status: "rejected", data: null, error: action.error };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -57,27 +34,16 @@ function pokemonInfoReducer(
 }
 
 const PokemonInfo: FC<PokemonInfoPorps> = ({ pokemonName }) => {
-  const [state, dispatch] = useReducer(pokemonInfoReducer, {
-    status: "idle",
-    pokemon: null,
-    error: null,
-  });
+  const state = useAsync(
+    () => {
+      if (!pokemonName) return;
+      return fetchPokemon(pokemonName);
+    },
+    pokemonInfoReducer,
+    [pokemonName]
+  );
 
-  useEffect(() => {
-    if (!pokemonName) return;
-
-    dispatch({ type: "pending" });
-
-    fetchPokemon(pokemonName).then(
-      (pokemon) => {
-        dispatch({ type: "resolved", pokemon });
-        console.log(pokemon);
-      },
-      (error) => dispatch({ type: "rejected", error })
-    );
-  }, [pokemonName]);
-
-  const { pokemon, status, error } = state;
+  const { data: pokemon, status, error } = state;
   switch (status) {
     case "idle":
       return <PokeBall status={status} />;
@@ -86,10 +52,12 @@ const PokemonInfo: FC<PokemonInfoPorps> = ({ pokemonName }) => {
     case "rejected":
       throw error;
     case "resolved":
-      return <div style={{display:'grid', placeContent:'center'}}>
-      <PokeBall status={status} />
-      <PokemonInfoView  pokemon={pokemon} />
-      </div>
+      return (
+        <div style={{ display: "grid", placeContent: "center" }}>
+          <PokeBall status={status} />
+          <PokemonInfoView pokemon={pokemon} />
+        </div>
+      );
 
     default:
       throw new Error("but...how?");

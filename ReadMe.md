@@ -2,10 +2,12 @@
 
 [![Technologie](https://img.shields.io/badge/%40%2018.2.0%20-React-blue)](https://es.reactjs.org/)
 [![Techonolgie](https://img.shields.io/badge/%40%203.2.3%20-Vite-green)](https://vitejs.dev/)
-[![Technologie](https://img.shields.io/badge/%40%201.56.1%20-Sass-pink)](https://tailwindcss.com/)
-[![Technologie](https://img.shields.io/badge/%40%201.56.1%20-TypeScript-blue)](https://tailwindcss.com/)
+[![Technologie](https://img.shields.io/badge/%40%201.56.1%20-Sass-pink)](https://sass-lang.com/)
+[![Technologie](https://img.shields.io/badge/%40%204.6.4%20-TypeScript-blue)](https://www.typescriptlang.org/)
+
 
 # [Demo](https://japafgm.vercel.app/)
+
 
 # JAPAFGM
 
